@@ -2,10 +2,8 @@
 # The APK is attached to a GitHub Release, so you can download it on your phone from:
 #   https://github.com/<you>/<repo>/releases/latest
 #
-# Optional repository secrets (Settings → Secrets and variables → Actions):
-#   EXPO_PUBLIC_SUPABASE_URL   your Supabase project URL
-#   EXPO_PUBLIC_SUPABASE_KEY   your Supabase anon / publishable key
-# Without them the APK still builds; the app will say it is not connected to its database.
+# The app connects to the Supabase project set in src/lib/supabase.ts. To build against a different
+# project, add repository secrets EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_KEY.
 
 name: Android APK
 
@@ -43,7 +41,7 @@ jobs:
           SUPABASE_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_KEY }}
         run: |
           printf 'EXPO_PUBLIC_SUPABASE_URL=%s\nEXPO_PUBLIC_SUPABASE_KEY=%s\n' "$SUPABASE_URL" "$SUPABASE_KEY" > .env
-          if [ -z "$SUPABASE_URL" ]; then echo "::warning::Supabase secrets are not set. The APK will build but show 'not connected'."; fi
+          if [ -z "$SUPABASE_URL" ]; then echo "Using the Supabase project built into src/lib/supabase.ts"; fi
 
       - name: Install packages
         run: scripts/ci-run.sh "Install packages" npm install --no-audit --no-fund

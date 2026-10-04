@@ -3,8 +3,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
 import { AppState } from 'react-native';
 
-const url = process.env.EXPO_PUBLIC_SUPABASE_URL ?? '';
-const key = process.env.EXPO_PUBLIC_SUPABASE_KEY ?? '';
+// Kodi's Supabase project. The publishable key is meant to ship inside the app: what each person can
+// read or change is decided by the database's security rules, not by keeping this key secret.
+// To point the app at another project, set EXPO_PUBLIC_SUPABASE_URL / EXPO_PUBLIC_SUPABASE_KEY in .env.
+const DEFAULT_URL = 'https://gdejrrogcdahwbrcelpi.supabase.co';
+const DEFAULT_KEY = 'sb_publishable_gdrse28ByABqkat2T9LaNw_0tLdJ0ry';
+
+const url = process.env.EXPO_PUBLIC_SUPABASE_URL || DEFAULT_URL;
+const key = process.env.EXPO_PUBLIC_SUPABASE_KEY || DEFAULT_KEY;
 
 export const isConfigured = url.startsWith('https://') && key.length > 20;
 

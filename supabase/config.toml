@@ -1,0 +1,7 @@
+project_id = "kodi"
+
+[functions.start-payment]
+verify_jwt = true
+
+[functions.payment-callback]
+verify_jwt = false

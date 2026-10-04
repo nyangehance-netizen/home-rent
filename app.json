@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Kodi",
+    "slug": "kodi",
+    "scheme": "kodi",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "bundleIdentifier": "tz.kodi.app",
+      "supportsTablet": false,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "tz.kodi.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0E5257"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Kodi uses your photos so you can add pictures of your property.",
+          "cameraPermission": "Kodi uses the camera so you can photograph your property."
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+# Same as .gitignore, except .env is uploaded so cloud builds get your Supabase URL and key.
+node_modules/
+.expo/
+dist/
+web-build/
+ios/
+android/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+npm-debug.*
+.DS_Store
